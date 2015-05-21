@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Commonsdev SSO</h1>
+
+  <h2>User</h2>
+  <ul>
+  <li>I'm a new user, I want to <a href="{% url 'registration_register' %}">register</a></li>
+  <li>I have an account, I want to <a href="{% url 'auth_login' %}">sign in</a></li>
+  </ul>
+{% endblock %}

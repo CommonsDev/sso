@@ -35,6 +35,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'default',
+    'register',
+    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,9 +45,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'oauth2_provider',
-    'default',
-    'register',
-    'registration',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -91,5 +91,14 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 
+
+## Non Django-native settings
+
 # Use custom URLs instead of the ones form django-registration-remux
 INCLUDE_REGISTER_URL = False
+
+# Name of the URL to redirect for a logged in user
+LOGIN_REDIRECT_URL = 'register_profile'
+
+# Name of the URL where a user may login
+LOGIN_URL = 'auth_login'

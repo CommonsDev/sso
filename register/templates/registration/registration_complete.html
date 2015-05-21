@@ -1,0 +1,8 @@
+{% extends "registration/registration_base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Activation email sent" %}{% endblock %}
+
+{% block content %}
+<p>You are now authenticated as {{ view.request.user }}</p>
+{% endblock %}
