@@ -4,20 +4,53 @@
   <title>{% block title %}SSO Authentication{% endblock %}</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/main.css">
+  {% block css %}
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+  {% endblock %}
+
+  <style>
+    body {
+      padding-top: 40px;
+      padding-bottom: 40px;
+      background-color: #f5f5f5;
+    }
+    .block-center {
+      max-width: 500px;
+      padding: 19px 29px 29px;
+      margin: 0 auto 20px;
+      background-color: #fff;
+      border: 1px solid #e5e5e5;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    }
+    .block-center .block-center-heading {
+      margin-bottom: 10px;
+    }
+
+  </style>
 </head>
 <body>
 {% with view.request.user as user %}
-  <nav>
-  {% if user.is_authenticated %}
-    <a href="{% url 'register_profile' %}">My account</a>
-    <a href="{% url 'auth_logout' %}">Logout</a>
-  {% else %}
-    <a href="{% url 'registration_register' %}">Join</a>
-    <a href="{% url 'auth_login' %}">Login</a>
-  {% endif %}
-  </nav>
+  <header>
+    <nav>
+    {% if user.is_authenticated %}
+      <a href="{% url 'register_profile' %}">My account</a>
+      <a href="{% url 'auth_logout' %}">Logout</a>
+    {% else %}
+      <a href="{% url 'registration_register' %}">Join</a>
+      <a href="{% url 'auth_login' %}">Login</a>
+    {% endif %}
+    </nav>
+  </header>
 
-  {% block content %}{% endblock %}
+  <main>
+    {% block content %}{% endblock %}
+  </main>
 {% endwith %}
 </body>
 </html>
