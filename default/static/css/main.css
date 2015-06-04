@@ -1,0 +1,56 @@
+body {
+  font-family: Helvetica, Verdana, Sans-Serif;
+}
+
+header {
+  width: 450px;
+  margin: auto;
+}
+
+header nav a {
+  display: inline-block;
+  padding: 0 .5em;
+}
+
+main {
+  padding: 2em;
+  margin: auto;
+  width: 400px;
+  background: white none repeat scroll 0% 0%;
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 5px;
+}
+
+form label.required {
+  font-weight: bold;
+}
+
+form p span {
+  display: block;
+  font-size: .9em;
+  color: #777;
+  font-style: italic;
+}
+
+form .errorlist {
+  color: #C00;
+  float: right;
+  margin-top: 30px;
+  list-style: none;
+}
+
+
+form .errorlist + p label {
+  color: #c00;
+}
+form .errorlist + p input {
+  border-color: #c00;
+}
+
+form input[type="submit"] {
+  background: #eee;
+  border: 2px solid #ccc;
+  padding: .5em 2em;
+  font-weight: bold;
+  margin-top: 2em;
+}
