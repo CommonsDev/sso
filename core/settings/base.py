@@ -90,7 +90,9 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'assets')
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'public', 'static')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'public', 'media')
 
 ## Non Django-native settings
 
