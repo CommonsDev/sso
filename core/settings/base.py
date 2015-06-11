@@ -16,7 +16,7 @@ from django.conf.global_settings import (
     AUTHENTICATION_BACKENDS as AUTHENTICATION_BACKENDS_DEFAULT
 )
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -91,7 +91,6 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'assets')
-
 
 ## Non Django-native settings
 
