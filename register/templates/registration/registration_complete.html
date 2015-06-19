@@ -4,5 +4,5 @@
 {% block title %}{% trans "Activation email sent" %}{% endblock %}
 
 {% block content %}
-<p>You are now authenticated as {{ view.request.user }}</p>
+<p>Your account was created. You can now <a href="{% url 'auth_login' %}">login</a>.</p>
 {% endblock %}

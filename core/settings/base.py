@@ -104,3 +104,7 @@ LOGIN_REDIRECT_URL = 'register_profile'
 
 # Name of the URL where a user may login
 LOGIN_URL = 'auth_login'
+
+AUTH_USER_MODEL = 'register.User'
+
+ACCOUNT_ACTIVATION_DAYS = 30
