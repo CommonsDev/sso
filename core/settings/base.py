@@ -36,6 +36,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = (
     'default',
+    'oauth',
     'register',
     'registration',
     'oauth2_provider',

@@ -5,7 +5,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^auth/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+    url(r'^auth/', include('oauth.urls', namespace='oauth2_provider')),
     # Using simple backend registration (no email confirmation). See
     # https://django-registration.readthedocs.org/en/latest/simple-backend.html
     (r'^registration/', include('register.urls')),
