@@ -1,9 +1,7 @@
 from oauth2_provider.views.application import (
     ApplicationUpdate as BaseApplicationUpdate)
-from oauth2_provider.views.application import (
-    ApplicationRegistration as BaseApplicationRegistration)
+from oauth2_provider.forms import RegistrationForm
 
-from .forms import RegistrationForm
 
 class ApplicationUpdate(BaseApplicationUpdate):
     """
@@ -11,5 +9,4 @@ class ApplicationUpdate(BaseApplicationUpdate):
     Overriding oauth2_provider.views.application.ApplicationUpdate to remove
     the `user_id` field.
     """
-    fields = ('name', 'client_type', 'authorization_grant_type', 'client_id',
-              'client_secret', 'redirect_uris', 'skip_authorization')
+    fields = RegistrationForm._meta.fields
