@@ -26,7 +26,7 @@
             {% endfor %}
 
             <div class="control-group">
-                <label class="control-label">Authorization url</label>
+                <label class="control-label">{% trans "Authorization URL" %}</label>
                 <div class="controls">
                     {% absurl 'oauth2_provider:authorize' %}
                 </div>
