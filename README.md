@@ -10,8 +10,8 @@ It is compatible with _Python 3.2+_ and based on
 
 ## Pre-requirements
 
-- _Python 3_ (3.2 or later). (it might also work with Python 2.7 or later).
-- _git_.
+- _Python 3_ (3.2 or later). (it might also work with Python 2.7 or later)
+- _git_
 - _pip_ for _Python 3_.
 
 
@@ -80,6 +80,53 @@ Adapting `ALLOWED_HOSTS` to avoir _error 400_.
 The most convenient way might be to use _wsgi_ with your _Nginx_ or _Apache_
 web-server.
 
+
+## Testing
+
+### Prerequirements
+
+1. Run this current project:
+
+    ./manage.py runserver
+
+2. Go to http://localhost:8000/registration/register/profile/, register an account if necessary (check your terminal to have a email validation URL).
+
+### with a _confidential client credientials_ grant type
+
+1. Go to http://localhost:8000/oauth/applications/register/ to create a
+  new application with a "confidential" _client type_
+  and a "client credientials" for the _authorization grant type_.
+
+2. Request a _Bearer token_:
+
+    http --auth MY_CLIENT_ID:MY_CLIENT_SECRET -f http://localhost:8000/oauth/token/ grant_type=client_credentials
+
+  Replace "MY_CLIENT_ID" and "MY_CLIENT_SECRET" with these given when
+  registrating your app.
+
+  You should get a JSON response like:
+
+    {
+      "access_token": "4cb7pw6aElBGTpGVeCv9a3m7Yver3r",
+      "expires_in": 36000,
+      "scope": "write read",
+      "token_type": "Bearer"
+    }
+
+  > I use [HTTPie](https://github.com/jkbrzt/httpie#installation) here.
+  Feel free to adapt it to your favorite (cURL, Postman, etc).
+
+
+### with a _confidential client credientials_ grant type
+
+Let's use a graphical interface this time.
+
+1. Go to http://localhost:8000/oauth/applications/register/ to create a
+  new application with a "confidential" _client type_
+  and an "authorization code" for the _authorization grant type_.
+
+2. go to http://django-oauth-toolkit.herokuapp.com/consumer/ and follow
+  the instructions.
 
 ## Technical details
 

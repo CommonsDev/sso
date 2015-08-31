@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'default',
     'register',
     'registration',
+    'oauth',
     'oauth2_provider',
 )
 
