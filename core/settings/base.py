@@ -15,7 +15,8 @@ from . import private
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+dirname = os.path.dirname
+BASE_DIR = dirname(dirname(dirname(os.path.abspath(__file__))))
 
 
 # Quick-start development settings - unsuitable for production
@@ -40,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'default',
+    'register',
     'registration',
     'oauth2_provider',
 )
@@ -117,6 +119,21 @@ MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'assets', 'media')
 
 CORS_ORIGIN_ALLOW_ALL = True
 
+
+# See http://django-registration-redux.readthedocs.org/en/latest/quickstart.html#settings
+# about the next 2 registration settings.
+REGISTRATION_AUTO_LOGIN = True
+
 ACCOUNT_ACTIVATION_DAYS = 7
 
-REGISTRATION_AUTO_LOGIN = True
+# Name of the URL to redirect for a logged in user
+LOGIN_REDIRECT_URL = 'register_profile'
+
+# Use custom URLs instead of the ones form django-registration-remux
+INCLUDE_REGISTER_URL = False
+
+# Name of the URL where a user may login
+LOGIN_URL = 'auth_login'
+
+
+AUTH_USER_MODEL = 'register.User'

@@ -1,0 +1,12 @@
+{% extends "registration/registration_base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Activation email sent" %}{% endblock %}
+
+{% block content %}
+<p>
+  {% blocktrans %}
+  Your account was created. Check your emails to activate it.
+  {% endblocktrans %}
+</p>
+{% endblock %}
