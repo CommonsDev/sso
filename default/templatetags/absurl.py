@@ -3,6 +3,7 @@ from django.core.urlresolvers import reverse
 
 register = Library()
 
+
 @register.simple_tag(takes_context=True)
 def absurl(context, *args, **kwargs):
     request = context.request

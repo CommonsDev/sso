@@ -19,29 +19,28 @@ It is compatible with _Python 3.2+_ and based on
 
 1. Download the sources:
 
-    git clone git@github.com:CommonsDev/sso.git
+        git clone git@github.com:CommonsDev/sso.git
 
 2. Make a virtualenv either using _virtualenvwrapper_ on the more basic
 _mkvirtualenv_:
 
-    virtualenv ./venv  # Python 3 version of virtualenv
-    source ./venv/bin/activate
-
-  > Make sure to use a _Python 3_ version of `virtualenv` or `mkvirtualenv`.
+        python3 -m venv ./venv
+        source ./venv/bin/activate
 
 3. Install dependencies:
 
   In production
 
-    pip install -r ./sso/requirements.txt
+      pip install -r ./sso/requirements.txt
+
 
   Or in development
 
-    pip install -r ./sso/requirements_local.txt
+      pip install -r ./sso/requirements_local.txt
 
 4. Configure your private infos:
 
-    cp ./sso/core/settings/private.py{.sample,}
+      cp ./sso/core/settings/private.py{.sample,}
 
   And customize the file _./sso/core/settings/private.py_.
 
@@ -49,16 +48,16 @@ _mkvirtualenv_:
 
   In production
 
-    mkdir ../data && chmod a+rw ../data
-    ./manage.py migrate --settings=core.settings.prod
-    ./manage.py collectstatic --settings=core.settings.prod
+      mkdir ../data && chmod a+rw ../data
+      ./manage.py migrate --settings=core.settings.prod
+      ./manage.py collectstatic --settings=core.settings.prod
 
   > As we are using sqlite3, the _data_ directory itself and the sqlite file
   must be writable by the web-server.
 
   Or in a development environment
 
-    ./manage.py migrate
+      ./manage.py migrate
 
 
 ## Configuration
@@ -72,7 +71,7 @@ Adapting `ALLOWED_HOSTS` to avoir _error 400_.
 
 ### For development or testing
 
-    `./manage.py runserver`
+      ./manage.py runserver
 
 
 ### In production
@@ -87,7 +86,8 @@ web-server.
 
 1. Run this current project:
 
-    ./manage.py runserver
+      ./manage.py runserver
+
 
 2. Go to http://localhost:8000/registration/register/profile/, register an account if necessary (check your terminal to have a email validation URL).
 
@@ -99,21 +99,21 @@ web-server.
 
 2. Request a _Bearer token_:
 
-    http --auth MY_CLIENT_ID:MY_CLIENT_SECRET -f http://localhost:8000/oauth/token/ grant_type=client_credentials
+        http --auth MY_CLIENT_ID:MY_CLIENT_SECRET -f http://localhost:8000/oauth/token/ grant_type=client_credentials
 
   Replace "MY_CLIENT_ID" and "MY_CLIENT_SECRET" with these given when
-  registrating your app.
+  registering your app.
 
   You should get a JSON response like:
 
-    {
-      "access_token": "4cb7pw6aElBGTpGVeCv9a3m7Yver3r",
-      "expires_in": 36000,
-      "scope": "write read",
-      "token_type": "Bearer"
-    }
+      {
+        "access_token": "4cb7pw6aElBGTpGVeCv9a3m7Yver3r",
+        "expires_in": 36000,
+        "scope": "write read",
+        "token_type": "Bearer"
+      }
 
-  > I use [HTTPie](https://github.com/jkbrzt/httpie#installation) here.
+> I use [HTTPie](https://github.com/jkbrzt/httpie#installation) here.
   Feel free to adapt it to your favorite (cURL, Postman, etc).
 
 
