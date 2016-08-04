@@ -34,17 +34,17 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'register',
+    'registration',
+    'default',
+    'oauth',
+    'oauth2_provider',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'default',
-    'register',
-    'registration',
-    'oauth',
-    'oauth2_provider',
 )
 
 MIDDLEWARE_CLASSES = (

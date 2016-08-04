@@ -20,5 +20,5 @@ urlpatterns = [
     url(r'^registration/', include('register.urls')),
     url(r'^oauth/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', include('default.urls')),
+    url(r'^', include('default.urls')),
 ]
