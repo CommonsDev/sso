@@ -18,7 +18,17 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^registration/', include('register.urls')),
-    url(r'^oauth/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+    url(r'^oauth/', include('oauth2_provider.urls',
+                            namespace='oauth2_provider')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('default.urls')),
 ]
+
+
+from django.conf import settings  # noqa
+
+if 'debug_toolbar' in settings.INSTALLED_APPS:
+    import debug_toolbar
+    urlpatterns += [
+        url(r'^__debug__/', include(debug_toolbar.urls)),
+    ]
