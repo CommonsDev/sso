@@ -1,0 +1,18 @@
+{% extends "registration/registration_base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Confirm your email" %}{% endblock %}
+
+{% block content %}
+<form method="post" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="{% trans 'Login' %}" />
+</form>
+
+<p>
+  <a href="{% url 'auth_password_reset' %}">{% trans "Forgot your password?" %}</a> -
+  <a href="{% url 'auth_email' %}">Login with a different email</a>
+</p>
+
+{% endblock %}
