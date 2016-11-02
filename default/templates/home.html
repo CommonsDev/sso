@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Commonsdev SSO</h1>
+  <h1>Single Sign-On</h1>
 
-  <h2>User</h2>
-  <ul>
-  <li>I'm a new user, I want to <a href="{% url 'registration_register' %}">register</a></li>
-  <li>I have an account, I want to <a href="{% url 'auth_login' %}">sign in</a></li>
-  </ul>
+  <p>
+    {% if view.request.user.is_authenticated %}
+      <p>You are logged as {{ view.request.user.email }}.</p>
+    {% else %}
+      <a href="{% url 'auth_email' %}">Login or create an account</a>
+    {% endif %}
+  </p>
 {% endblock %}

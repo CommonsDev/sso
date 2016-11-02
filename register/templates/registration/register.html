@@ -1,0 +1,17 @@
+{% extends "registration/registration_base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Create your account" %}{% endblock %}
+
+{% block content %}
+<form method="post" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="{% trans 'Create account' %}" />
+</form>
+
+<p>
+  <a href="{% url 'auth_email' %}">Login with a different email</a>
+</p>
+
+{% endblock %}

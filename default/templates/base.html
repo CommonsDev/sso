@@ -11,22 +11,13 @@
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
 <body>
-{% with view.request.user as user %}
   <header>
-    <nav>
-    {% if user.is_authenticated %}
-      <a href="{% url 'register_profile' %}">My account</a>
+    {% if view.request.user.is_authenticated %}
       <a href="{% url 'auth_logout' %}">Logout</a>
-    {% else %}
-      <a href="{% url 'registration_register' %}">Join</a>
-      <a href="{% url 'auth_login' %}">Login</a>
     {% endif %}
-    </nav>
   </header>
-
   <main>
     {% block content %}{% endblock %}
   </main>
-{% endwith %}
 </body>
 </html>
