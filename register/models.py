@@ -45,3 +45,6 @@ class User(AbstractBaseUser):
 
     def has_perm(self, *args):
         return self.is_staff
+
+    def get_full_name(self):
+        return self.email
