@@ -1,7 +1,7 @@
-from django.views.generic import TemplateView, FormView, RedirectView
-from django.shortcuts import render
+from django.shortcuts import reverse
 from django.contrib.auth import get_user_model, login, logout
 from django.urls import reverse, reverse_lazy
+from django.views.generic import TemplateView, FormView, RedirectView
 
 from registration.backends.default.views import RegistrationView
 
@@ -66,3 +66,12 @@ class LogoutView(RedirectView):
     def get(self, request, *args, **kwargs):
         logout(self.request)
         return super().get(request, *args, **kwargs)
+
+
+class NextRedirectView(RedirectView):
+    def get_redirect_url(self, *args, **kwargs):
+        try:
+            redirect = self.request.session.pop('next')
+        except KeyError:
+            return reverse('homepage')
+        return redirect
