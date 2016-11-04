@@ -1,9 +1,13 @@
 from django.shortcuts import reverse
 from django.contrib.auth import get_user_model, login, logout
+from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse, reverse_lazy
 from django.views.generic import TemplateView, FormView, RedirectView
 
+from registration import signals
 from registration.backends.default.views import RegistrationView
+from registration.models import RegistrationProfile
+from registration.users import UserModel
 
 from . import forms
 
@@ -58,6 +62,31 @@ class LoginView(EmailPrefilledMixin, FormView):
 class RegisterView(EmailPrefilledMixin, RegistrationView):
     template_name = 'registration/register.html'
     form_class = forms.RegisterForm
+
+    def register(self, form):
+        """
+        We need to inject `next` into the template.
+        Hackish way is to use `site` that is passed through the template.
+        """
+        site = get_current_site(self.request)
+        # Hackish here injecting the `next` to a template accessed variable.
+        site.next = self.request.session.get('next')
+
+        if hasattr(form, 'save'):
+            new_user_instance = form.save()
+        else:
+            new_user_instance = (UserModel().objects
+                                 .create_user(**form.cleaned_data))
+        new_user = RegistrationProfile.objects.create_inactive_user(
+            new_user=new_user_instance,
+            site=site,
+            send_email=self.SEND_ACTIVATION_EMAIL,
+            request=self.request,
+        )
+        signals.user_registered.send(sender=self.__class__,
+                                     user=new_user,
+                                     request=self.request)
+        return new_user
 
 
 class LogoutView(RedirectView):
