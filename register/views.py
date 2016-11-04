@@ -1,4 +1,5 @@
 from django.shortcuts import reverse
+from django.contrib import messages
 from django.contrib.auth import get_user_model, login, logout
 from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse, reverse_lazy
@@ -102,5 +103,8 @@ class NextRedirectView(RedirectView):
         try:
             redirect = self.request.session.pop('next')
         except KeyError:
+            messages.error(self.request, 'We could not redirect you to the '
+                           'original service; the "next" parameter is '
+                           'missing.')
             return reverse('homepage')
         return redirect
