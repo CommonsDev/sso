@@ -4,6 +4,7 @@
 {% block title %}{% trans "Create your account" %}{% endblock %}
 
 {% block content %}
+<h1>Create your account</h1>
 <form method="post" action="">
     {% csrf_token %}
     {{ form.as_p }}
@@ -11,7 +12,7 @@
 </form>
 
 <p>
-  <a href="{% url 'auth_email' %}">Login with a different email</a>
+  <a href="{% url 'auth' %}">Log in with a different email</a>
 </p>
 
 {% endblock %}

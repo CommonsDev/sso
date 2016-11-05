@@ -4,6 +4,7 @@
 {% block title %}{% trans "Validate your identity" %}{% endblock %}
 
 {% block content %}
+<h1>Validate your identity</h1>
 <form method="post" action="">
     {% csrf_token %}
     {{ form.as_p }}
@@ -12,7 +13,7 @@
 
 <p>
   <a href="{% url 'auth_password_reset' %}">{% trans "Forgot your password?" %}</a> -
-  <a href="{% url 'auth_email' %}">Login with a different email</a>
+  <a href="{% url 'auth' %}">Log in with a different email</a>
 </p>
 
 {% endblock %}

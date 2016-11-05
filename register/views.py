@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView, FormView, RedirectView
-from django.shortcuts import render
 from django.contrib.auth import get_user_model, login, logout
+from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 
 from registration.backends.default.views import RegistrationView
@@ -9,7 +9,12 @@ from . import forms
 
 
 class ProfileView(TemplateView):
-    template_name = 'register/profile.html'
+    template_name = 'registration/profile.html'
+
+    def get(self, request, *args, **kwargs):
+        if not request.user.is_authenticated():
+            return HttpResponseRedirect(reverse('auth'))
+        return super().get(request, *args, **kwargs)
 
 
 class EmailView(FormView):
