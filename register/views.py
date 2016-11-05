@@ -1,6 +1,6 @@
-from django.shortcuts import reverse
 from django.contrib import messages
 from django.contrib.auth import get_user_model, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse, reverse_lazy
 from django.views.generic import TemplateView, FormView, RedirectView
@@ -10,11 +10,14 @@ from registration.backends.default.views import RegistrationView
 from registration.models import RegistrationProfile
 from registration.users import UserModel
 
+from core.decorators import class_decorator
+
 from . import forms
 
 
+@class_decorator(login_required(login_url=reverse_lazy('auth')))
 class ProfileView(TemplateView):
-    template_name = 'register/profile.html'
+    template_name = 'registration/profile.html'
 
 
 class EmailView(FormView):

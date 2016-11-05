@@ -24,6 +24,13 @@ main {
   border-radius: 5px;
 }
 
+main > h1 {
+  font-size: 1.2em;
+  border-bottom: 1px dashed #ccc;
+  padding-bottom: .3em;
+  margin-bottom: 1em;
+}
+
 form label.required {
   font-weight: bold;
 }
