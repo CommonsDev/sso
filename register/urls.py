@@ -10,9 +10,8 @@ urlpatterns = [
     # for proper overriding.
     url(r'^', include('registration.backends.default.urls')),
     url(r'^auth/login/$', views.LoginView.as_view(), name='auth_login'),
-    url(r'^auth/register/$', views.RegisterView.as_view(), name='auth_register'),
-    url(r'^register/profile/$', views.ProfileView.as_view(),
+    url(r'^auth/register/$', views.RegisterView.as_view(),
+        name='auth_register'),
+    url(r'^profile/$', views.ProfileView.as_view(),
         name='register_profile'),
-    url(r'^register/$', views.RegistrationView.as_view(),
-        name='registration_register'),
 ]
