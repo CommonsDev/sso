@@ -22,8 +22,8 @@
 </p>
 
 <p>
-    <a href="http://{{site.domain}}{% url 'registration_activate' activation_key %}">
-        {{site.domain}}{% url 'registration_activate' activation_key %}
+    <a href="http://{{site.domain}}{% url 'registration_activate' activation_key %}?next={{ site.next }}">
+        {{site.domain}}{% url 'registration_activate' activation_key %}?next={{ site.next }}
     </a>
 </p>
 <p>

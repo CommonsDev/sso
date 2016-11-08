@@ -57,3 +57,29 @@ form input[type="submit"] {
   font-weight: bold;
   margin-top: 2em;
 }
+
+.messages {
+  margin: 0;
+  list-style: none;
+}
+.messages li {
+  border: 1px solid;
+  margin: 10px 0px;
+  padding:15px 10px;
+}
+.messages li.info {
+  color: #00529B;
+  background-color: #BDE5F8;
+}
+.messages li.success {
+  color: #4F8A10;
+  background-color: #DFF2BF;
+}
+.messages li.warning {
+  color: #9F6000;
+  background-color: #FEEFB3;
+}
+.messages li.error {
+  color: #D8000C;
+  background-color: #FFBABA;
+}
