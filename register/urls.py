@@ -14,8 +14,6 @@ urlpatterns = [
         name='auth_register'),
     url(r'^activate/complete/$', views.NextRedirectView.as_view(),
         name='registration_activation_complete'),
-    url(r'^register/profile/$', views.ProfileView.as_view(),
+    url(r'^auth/profile/$', views.ProfileView.as_view(),
         name='register_profile'),
-    url(r'^register/$', views.RegistrationView.as_view(),
-        name='registration_register'),
 ]
