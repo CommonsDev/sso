@@ -21,6 +21,7 @@ from register.views import LoginView
 
 urlpatterns = [
     url(r'^', include('register.urls')),
+    url(r'^api/', include('api.urls')),
     url(r'^oauth/', include('oauth.urls', namespace='oauth2_provider')),
     url(r'^admin/login/$', LoginView.as_view()),
     url(r'^admin/', include(admin.site.urls)),
