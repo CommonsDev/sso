@@ -47,11 +47,16 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 )
 
+AUTHENTICATION_BACKENDS = (
+    'oauth2_provider.backends.OAuth2Backend',
+)
+
 MIDDLEWARE = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     # Must be before CommonMiddleware
     # https://github.com/ottoyiu/django-cors-headers/#setup
     'corsheaders.middleware.CorsMiddleware',
+    'oauth.middleware.OAuth2TokenMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
