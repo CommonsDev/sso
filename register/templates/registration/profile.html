@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+{% with view.request.user as user %}
+  <p>You are logged as {{ user }}</p>
+
+{% if user.is_staff %}
+  <div class="block-center">
+      <h3 class="block-center-heading">Your applications</h3>
+      {% if applications %}
+        <ul>
+            {% for application in applications %}
+                <li><a href="{{ application.get_absolute_url }}">{{ application.name }}</a></li>
+            {% endfor %}
+        </ul>
+      {% else %}
+        <p>No application yet.</p>
+      {% endif %}
+      <a class="btn btn-success" href="{% url "oauth2_provider:register" %}">Register a new application</a>
+  </div>
+{% endif %}
+{% endwith %}
+{% endblock %}
